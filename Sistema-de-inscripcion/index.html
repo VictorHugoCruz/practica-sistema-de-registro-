@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Sistema de registro</title>
 </head>
 <body>
@@ -14,12 +15,30 @@
         </nav>
     </header>
     <main>
-        <form action="">
-            <label for="InputMateria">Materia:</label>
-            <input type="text" id="InputMateria">
+        <div class="form-container-registro">
+            <h2>Formulario de registro de Estudiente</h2>
+            <form action="">
+                <label for="InputNombre">Nombre:</label>
+                <input type="text" id="InputNombre" placeholder="Ingrese su nombre">
 
-        </form>
-        <p id="Mensaje"></p>
+                <label for="InputApellido">Apellido:</label>
+                <input type="text" id="InputApellido" placeholder="Ingrese su apellido">
+
+                <label for="InputEdad">Edad:</label>
+                <input type="number" id="InputEdad" placeholder="Ingrese su edad">
+
+                <label for="InputSexo">Sexo:</label>
+                <input type="text" id="InputSexo" placeholder="'Hombre' o 'Mujer'">
+
+                <label for="InputCarrera">Carrera:</label>
+                <input type="text" id="InputCarrera" placeholder="Ingrese su Carrera">
+
+                <button type="button" onclick="nuevoEstudiante()">Enviar</button>
+            </form>
+        </div>
+        <div>
+           <p id="usuario"></p>
+        </div>
     </main>
     <script src="./main.js"></script>
 </body>

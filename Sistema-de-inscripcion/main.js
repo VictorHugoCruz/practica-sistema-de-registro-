@@ -3,12 +3,36 @@ class Materia{
         nombre,
         maxEstudiantes,
         listaEstudiantes=[],
-        profesor = null,
+        profesor = {},
     }){
-        this.nombre= nombre;
-        this.maxEstudiantes= maxEstudiantes;
-        this.listaEstudiantes = listaEstudiantes
-        this.profesor=profesor;
+        this._nombre= nombre;
+        this._maxEstudiantes= maxEstudiantes;
+        this._listaEstudiantes = listaEstudiantes
+        this._profesor=profesor;
+    }
+
+    get nombre(){
+        return this._nombre;
+    }
+
+    set nombre(nuevoNombre){
+        if(nuevoNombre === null || nuevoNombre === undefined){
+            console.error("introduzca un nombre valido");
+        }else{
+            this._nombre=nuevoNombre;
+        }
+    }
+
+    get maxEstudiantes(){
+        return this._maxEstudiantes;   
+    }
+
+    set maxEstudiantes(cantidadDeEstudiantes){
+        if(cantidadDeEstudiantes<=10){
+            console.error("No puede existir menos de 10 estudiantes para que el curso este habilitado");
+        }else{
+            this._maxEstudiantes=cantidadDeEstudiantes
+        }
     }
 
     inscribirEstudiante(estudiante){
@@ -20,10 +44,10 @@ class Materia{
         }
     }
 
-    retirarEstudiante(estudiante){
+    retirarEstudiante(nomEstudiante){
         let posicion;
-       for (const estudiante in this.listaEstudiantes) {
-           if(estudiante==this.listaEstudiantes[estudiante]){
+        for (const estudiante in this.listaEstudiantes) {
+           if(nomEstudiante==this.listaEstudiantes[estudiante]){
             posicion=parseInt(estudiante);
            }
            
@@ -80,8 +104,40 @@ const programacion = new Materia({nombre: "Programacion", maxEstudiantes: 15});
 const fisica = new Materia({nombre: "Fisica", maxEstudiantes: 20});
 const diseñoWeb = new Materia({nombre: "Diseño Web",maxEstudiantes: 25});
 const algebra = new Materia({nombre: "Algebra", maxEstudiantes: 12});
-
+//creamos las instancias de profesor y de estudiante
 const profesor = new Profesor({nombre: "Edson", apellido: "Cruz",edad: 26,sexo: "Hombre",especialidad: "Informatica"});
-const estudiante = new Estudiante({nombre: "Victor",apellido: "Cruz",edad: 33,sexo: "Hombre",especialidad: "Sistemas Informaticos"});
+const estudiante = new Estudiante({nombre: "Victor",apellido: "Cruz",edad: 33,sexo: "Hombre",carrera: "Sistemas Informaticos"});
 
-programacion.inscribirEstudiante(estudiante);
+// const estudiante1 = new Estudiante({nombre: "Vanesa",apellido: "Pozo",edad: 34,sexo: "Mujer", carrera: "Contabilidad"});
+
+
+// const estudiante2 = new Estudiante({nombre: "Pepito",apellido: "Peres",edad: 19, sexo: "Hombre", carrera: "Informatica"});
+
+
+// const estudiante3 = new Estudiante({nombre: "Mario",apellido: "Paz",edad: 23,sexo: "Hombre", carrera: "Sistemas Informaticos"});
+
+
+// programacion.inscribirEstudiante(estudiante);
+// programacion.inscribirEstudiante(estudiante1);
+// programacion.inscribirEstudiante(estudiante2);
+// programacion.inscribirEstudiante(estudiante3);
+// programacion.profesor = profesor;
+// console.log(programacion);
+// programacion.retirarEstudiante(estudiante2);
+// console.log(programacion);
+
+//funcion para crear un nuevo estudiante
+
+function nuevoEstudiante(){
+    
+    let name = document.getElementById("InputNombre").value;
+    let lastName = document.getElementById("InputApellido").value;
+    let age = document.getElementById("InputEdad").value;
+    let sex = document.getElementById("InputSexo").value;
+    let course = document.getElementById("InputCarrera").value;
+    const newStudent = new Estudiante({nombre: name, apellido: lastName, edad: age, sexo: sex, carrera: course});
+
+    console.log(newStudent);
+    document.getElementById("usuario").innerHTML='El estudiante se a registrado correctamente'
+}
+
